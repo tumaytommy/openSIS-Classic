@@ -211,11 +211,11 @@
                             } else if ($v == '6.3' || $v == '6.4' || $v == '6.5' || $v == '7.0') {
                                 $dbconn->query('TRUNCATE app');
                                 $app_insert = "INSERT INTO `app` (`name`, `value`) VALUES
-                                        ('version', '9.1'),
-                                        ('date', 'December 30, 2023'),
+                                        ('version', '9.3'),
+                                        ('date', 'February 06, 2026'),
                                         ('build', '20221230001'),
                                         ('update', '0'),
-                                        ('last_updated', 'December 30, 2023');";
+                                        ('last_updated', 'February 06, 2026');";
                                 $dbconn->query($app_insert);
 
                                 $dbconn->query('ALTER TABLE `staff` ADD `img_name` VARCHAR(255) NULL AFTER `disability_desc`');
@@ -378,11 +378,11 @@
 
                                 $dbconn->query('TRUNCATE app');
                                 $app_insert = "INSERT INTO `app` (`name`, `value`) VALUES
-                                        ('version', '9.1'),
-                                        ('date', 'December 30, 2023'),
+                                        ('version', '9.3'),
+                                        ('date', 'February 06, 2026'),
                                         ('build', '20221230001'),
                                         ('update', '0'),
-                                        ('last_updated', 'December 30, 2023');";
+                                        ('last_updated', 'February 06, 2026');";
                                 $dbconn->query($app_insert);
 
                                 $dbconn->query('CREATE TABLE `api_info` (
@@ -507,11 +507,11 @@
 
                                 $dbconn->query('TRUNCATE app');
                                 $app_insert = "INSERT INTO `app` (`name`, `value`) VALUES
-                                    ('version', '9.1'),
-                                    ('date', 'December 30, 2023'),
+                                    ('version', '9.3'),
+                                    ('date', 'February 06, 2026'),
                                     ('build', '20221230001'),
                                     ('update', '0'),
-                                    ('last_updated', 'December 30, 2023');";
+                                    ('last_updated', 'February 06, 2026');";
                                 $dbconn->query($app_insert) or die($dbconn->error);
 
                                 $dbconn->query('CREATE TABLE IF NOT EXISTS `user_file_upload` (
@@ -627,11 +627,11 @@
                             } else if ($v == '7.3') {
                                 $dbconn->query('TRUNCATE app');
                                 $app_insert = "INSERT INTO `app` (`name`, `value`) VALUES
-                                        ('version', '9.1'),
-                                        ('date', 'December 30, 2023'),
+                                        ('version', '9.3'),
+                                        ('date', 'February 06, 2026'),
                                         ('build', '20221230001'),
                                         ('update', '0'),
-                                        ('last_updated', 'December 30, 2023');";
+                                        ('last_updated', 'February 06, 2026');";
                                 $dbconn->query($app_insert) or die($dbconn->error);
 
                                 $dbconn->query('CREATE TABLE IF NOT EXISTS `user_file_upload` (
@@ -764,11 +764,11 @@
                             } else if ($v == '7.4' || $v == '7.5' || $v == '7.6' || $v == '8.0') {
                                 $dbconn->query('TRUNCATE app');
                                 $app_insert = "INSERT INTO `app` (`name`, `value`) VALUES
-                                        ('version', '9.1'),
-                                        ('date', 'December 30, 2023'),
+                                        ('version', '9.3'),
+                                        ('date', 'February 06, 2026'),
                                         ('build', '20221230001'),
                                         ('update', '0'),
-                                        ('last_updated', 'December 30, 2023');";
+                                        ('last_updated', 'February 06, 2026');";
                                 $dbconn->query($app_insert) or die($dbconn->error);
                                 
                                 $dbconn->query('CREATE TABLE IF NOT EXISTS `user_file_upload` (
