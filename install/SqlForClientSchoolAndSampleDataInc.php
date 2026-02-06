@@ -54,11 +54,11 @@ SET time_zone = '+00:00';
 --
 
 INSERT INTO `app` (`name`, `value`) VALUES
-('version', '9.2'),
-('date', 'October 27, 2025'),
+('version', '9.3'),
+('date', 'February 06, 2026'),
 ('build', '20250827001'),
 ('update', '0'),
-('last_updated', 'October 27, 2025');
+('last_updated', 'February 06, 2026');
 
 --
 -- Dumping data for table `attendance_calendar`
