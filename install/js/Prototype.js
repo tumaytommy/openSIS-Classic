@@ -476,7 +476,14 @@ Object.extend(String.prototype, (function() {
   }
 
   function stripTags() {
-    return this.replace(/<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi, '');
+    var result = String(this);
+    var pattern = /<[^>]*>/g;
+    var previous;
+    do {
+      previous = result;
+      result = result.replace(pattern, '');
+    } while (result !== previous);
+    return result;
   }
 
   function stripScripts() {
@@ -3867,7 +3874,7 @@ Object.extend(Selector, {
 
   split: function(expression) {
     var expressions = [];
-    expression.scan(/(([\w#:.~>+()\s-]*|\*|\[[^\]]*\])+)\s*(,|$)/, function(m) {
+    expression.scan(/([^,]+)\s*(,|$)/, function(m) {
       expressions.push(m[1].strip());
     });
     return expressions;
