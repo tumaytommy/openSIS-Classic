@@ -477,7 +477,7 @@ Object.extend(String.prototype, (function() {
 
   function stripTags() {
     var result = String(this);
-    var pattern = /<\w+(\s+("[^"]*"|'[^']*'|[^>])+)?>|<\/\w+>/gi;
+    var pattern = /<[^>]*>/g;
     var previous;
     do {
       previous = result;
