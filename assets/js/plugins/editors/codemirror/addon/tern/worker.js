@@ -12,10 +12,12 @@ this.onmessage = function(e) {
     postMessage({id: data.id, body: reqData, err: err && String(err)});
   });
   case "getFile":
-    var c = pending[data.id];
-    delete pending[data.id];
-    if (typeof c === "function") {
-      return c(data.err, data.text);
+    if (Object.prototype.hasOwnProperty.call(pending, data.id)) {
+      var c = pending[data.id];
+      delete pending[data.id];
+      if (typeof c === "function") {
+        return c(data.err, data.text);
+      }
     }
     return;
   default: throw new Error("Unknown message type: " + data.type);
