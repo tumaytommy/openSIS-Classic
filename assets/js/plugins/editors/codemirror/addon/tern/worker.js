@@ -14,7 +14,10 @@ this.onmessage = function(e) {
   case "getFile":
     var c = pending[data.id];
     delete pending[data.id];
-    return c(data.err, data.text);
+    if (typeof c === "function") {
+      return c(data.err, data.text);
+    }
+    return;
   default: throw new Error("Unknown message type: " + data.type);
   }
 };
