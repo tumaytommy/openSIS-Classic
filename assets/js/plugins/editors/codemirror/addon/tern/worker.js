@@ -12,22 +12,20 @@ this.onmessage = function(e) {
     postMessage({id: data.id, body: reqData, err: err && String(err)});
   });
   case "getFile":
-    if (Object.prototype.hasOwnProperty.call(pending, data.id)) {
-      var c = pending[data.id];
-      delete pending[data.id];
-      if (typeof c === "function") {
-        return c(data.err, data.text);
-      }
+    var c = pending.get(data.id);
+    if (typeof c === "function") {
+      pending.delete(data.id);
+      return c(data.err, data.text);
     }
     return;
   default: throw new Error("Unknown message type: " + data.type);
   }
 };
 
-var nextId = 0, pending = {};
+var nextId = 0, pending = new Map();
 function getFile(file, c) {
   postMessage({type: "getFile", name: file, id: ++nextId});
-  pending[nextId] = c;
+  pending.set(nextId, c);
 }
 
 function startServer(defs, plugins, scripts) {
