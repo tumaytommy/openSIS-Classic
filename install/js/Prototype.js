@@ -3487,7 +3487,7 @@ Object.extend(Selector, {
       return new Template('n = h.attr(n, r, "#{1}", "#{3}", "#{2}", c); c = false;').evaluate(m);
     },
     pseudo: function(m) {
-      if (m[6]) m[6] = m[6].replace(/"/g, '\\"');
+      if (m[6]) m[6] = m[6].replace(/\\/g, '\\\\').replace(/"/g, '\\"');
       return new Template('n = h.pseudo(n, "#{1}", "#{6}", r, c); c = false;').evaluate(m);
     },
     descendant:   'c = "descendant";',
