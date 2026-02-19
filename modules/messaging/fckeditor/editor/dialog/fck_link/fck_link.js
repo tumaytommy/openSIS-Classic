@@ -141,7 +141,7 @@ oParser.ParseEMailUri = function( sUrl )
 			try
 			{
 				// Escape special chars.
-				func = func.replace( /([\/^$*+.?()\[\]])/g, '\\$1' ) ;
+				func = func.replace( /([\\\/^$*+.?()\[\]])/g, '\\$1' ) ;
 
 				// Define the possible keys.
 				var keys = new Array('NAME', 'DOMAIN', 'SUBJECT', 'BODY') ;
