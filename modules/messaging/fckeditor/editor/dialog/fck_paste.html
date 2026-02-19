@@ -250,7 +250,12 @@
         html = html.replace(/<w:[^>]*>[\s\S]*?<\/w:[^>]*>/gi, "");
 
         // Remove Tags with XML namespace declarations: <o:p><\/o:p>
-        html = html.replace(/<\/?\w+:[^>]*>/gi, "");
+        var xmlNsPattern = /<\/?\w+:[^>]*>/gi;
+        var prevXml;
+        do {
+          prevXml = html;
+          html = html.replace(xmlNsPattern, "");
+        } while (html !== prevXml);
 
         // Remove comments [SF BUG-1481861].
         var commentPattern = /<\!--[\s\S]*?-->/g;
