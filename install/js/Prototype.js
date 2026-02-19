@@ -3299,7 +3299,7 @@ var Selector = Class.create({
       case 'selectorsAPI':
         if (root !== document) {
           var oldId = root.id, id = $(root).identify();
-          id = id.replace(/([\.:])/g, "\\$1");
+          id = id.replace(/([\\.:])/g, "\\$1");
           e = "#" + id + " " + e;
         }
 
