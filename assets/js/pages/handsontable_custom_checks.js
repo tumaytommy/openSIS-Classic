@@ -68,7 +68,15 @@ $(function() {
         // Making sure the allowed arg is a string containing only tags in lowercase (<a><b><c>)
         allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
 
-        return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+        // Remove comments and PHP tags in a loop to handle nested patterns
+        var result = input;
+        var previous;
+        do {
+            previous = result;
+            result = result.replace(commentsAndPhpTags, '');
+        } while (result !== previous);
+
+        return result.replace(tags, function ($0, $1) {
             return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
         });
     }
