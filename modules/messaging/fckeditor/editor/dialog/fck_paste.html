@@ -260,10 +260,12 @@
         html = html.replace(/<H\d>\s*<\/H\d>/gi, "");
 
         // Remove "display:none" tags.
-        html = html.replace(
-          /<(\w+)[^>]*\sstyle="[^"]*DISPLAY\s?:\s?none[\s\S]*?<\/\1>/gi,
-          ""
-        );
+        var displayNonePattern = /<(\w+)[^>]*\sstyle="[^"]*DISPLAY\s?:\s?none[\s\S]*?<\/\1>/gi;
+        var previousHtml;
+        do {
+          previousHtml = html;
+          html = html.replace(displayNonePattern, "");
+        } while (html !== previousHtml);
 
         // Remove language tags
         html = html.replace(/<(\w[^>]*) language=([^ |>]*)([^>]*)/gi, "<$1$3");
