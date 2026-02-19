@@ -235,10 +235,10 @@ oParser.CreateEMailUri = function( address, subject, body )
 			}
 
 			// Replace the keys by their values (embedded in single quotes).
-			func = func.replace(/NAME/g, "'" + aAddressParts[0].replace(/'/g, '\\\'') + "'") ;
-			func = func.replace(/DOMAIN/g, "'" + aAddressParts[1].replace(/'/g, '\\\'') + "'") ;
-			func = func.replace(/SUBJECT/g, "'" + encodeURIComponent( subject ).replace(/'/g, '\\\'') + "'") ;
-			func = func.replace(/BODY/g, "'" + encodeURIComponent( body ).replace(/'/g, '\\\'') + "'") ;
+			func = func.replace(/NAME/g, "'" + aAddressParts[0].replace(/\\/g, '\\\\').replace(/'/g, '\\\'') + "'") ;
+			func = func.replace(/DOMAIN/g, "'" + aAddressParts[1].replace(/\\/g, '\\\\').replace(/'/g, '\\\'') + "'") ;
+			func = func.replace(/SUBJECT/g, "'" + encodeURIComponent( subject ).replace(/\\/g, '\\\\').replace(/'/g, '\\\'') + "'") ;
+			func = func.replace(/BODY/g, "'" + encodeURIComponent( body ).replace(/\\/g, '\\\\').replace(/'/g, '\\\'') + "'") ;
 
 			return 'javascript:' + func ;
 
