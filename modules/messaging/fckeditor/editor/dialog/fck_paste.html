@@ -253,7 +253,12 @@
         html = html.replace(/<\/?\w+:[^>]*>/gi, "");
 
         // Remove comments [SF BUG-1481861].
-        html = html.replace(/<\!--[\s\S]*?-->/g, "");
+        var commentPattern = /<\!--[\s\S]*?-->/g;
+        var prevHtml;
+        do {
+          prevHtml = html;
+          html = html.replace(commentPattern, "");
+        } while (html !== prevHtml);
 
         html = html.replace(/<(U|I|STRIKE)>&nbsp;<\/\1>/g, "&nbsp;");
 
