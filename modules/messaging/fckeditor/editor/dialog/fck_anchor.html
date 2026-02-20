@@ -128,7 +128,7 @@
             // in FCKTempBin after undos. See #2263.
             var replaceAnchor = oEditor.FCK.EditorDocument.createElement(
               '<a name="' +
-                FCKTools.HTMLEncode(sNewName).replace('"', "&quot;") +
+                FCKTools.HTMLEncode(sNewName).replace(/"/g, "&quot;") +
                 '">'
             );
             oEditor.FCKDomTools.MoveChildren(oAnchor, replaceAnchor);
