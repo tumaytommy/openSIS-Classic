@@ -264,7 +264,7 @@ $(function() {
         if (val === null)
         val = "null";
     
-        $('pre.val > code', $container).html( ($.isArray(val) ? JSON.stringify(val) : "\"" + val.replace('"', '\\"') + "\"") );
+        $('pre.val > code', $container).html( ($.isArray(val) ? JSON.stringify(val) : "\"" + val.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + "\"") );
         $('pre.items > code', $container).html(JSON.stringify($element.tagsinput('items')));
         Prism.highlightAll();
     }).trigger('change');
