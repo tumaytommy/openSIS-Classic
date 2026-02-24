@@ -1,3 +1,9 @@
+// HTML escape helper to prevent XSS in error messages
+function escapeHtml(str) {
+  if (str == null) return '';
+  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function Validator(frmname, submit_id = false) {
   this.formobj = document.forms[frmname];
 
@@ -183,7 +189,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -199,7 +205,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -219,7 +225,7 @@ function V2validateData(strValidateStr, objValue, strError) {
           }
           $("#" + alertDiv).html(
             '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-              strError +
+              escapeHtml(strError) +
               "</div>"
           );
           return false;
@@ -236,7 +242,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -252,7 +258,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -305,7 +311,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -323,7 +329,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -342,7 +348,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -356,7 +362,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -370,7 +376,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -384,7 +390,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -400,7 +406,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -419,7 +425,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -455,7 +461,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -473,7 +479,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -492,7 +498,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n [Error character position " +
             eval(charpos + 1) +
             "]" +
@@ -509,7 +515,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -524,7 +530,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -537,7 +543,7 @@ function V2validateData(strValidateStr, objValue, strError) {
       if (isNaN(objValue.value)) {
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            objValue.name +
+            escapeHtml(objValue.name) +
             ": Should be a number " +
             "</div>"
         );
@@ -549,7 +555,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -561,7 +567,7 @@ function V2validateData(strValidateStr, objValue, strError) {
       if (isNaN(objValue.value)) {
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            objValue.name +
+            escapeHtml(objValue.name) +
             ": Should be a number " +
             "</div>"
         );
@@ -574,7 +580,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -589,7 +595,7 @@ function V2validateData(strValidateStr, objValue, strError) {
           }
           $("#" + alertDiv).html(
             '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-              strError +
+              escapeHtml(strError) +
               "</div>"
           );
           return false;
@@ -612,7 +618,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -626,7 +632,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
@@ -648,7 +654,7 @@ function V2validateData(strValidateStr, objValue, strError) {
           }
           $("#" + alertDiv).html(
             '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-              strError +
+              escapeHtml(strError) +
               "</div>"
           );
           return false;
@@ -665,7 +671,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "</div>"
         );
         return false;
