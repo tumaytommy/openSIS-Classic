@@ -505,15 +505,20 @@ function toggle_course_weight(param, cp_id) {
     }
 }
 function ListOutputJS() {
-    var basePath = document.getElementById("search_path").value || '';
-    // Basic normalization to avoid dangerous schemes/protocols from DOM text
-    basePath = String(basePath).trim();
-    if (/^javascript:/i.test(basePath)) {
-        // Fallback to current path if an unexpected scheme is detected
-        basePath = window.location.pathname;
-    }
+    var basePath = document.getElementById("search_path").value;
     var lo_search = document.getElementById("LO_search").value;
-    document.location.href = basePath + '&LO_search=' + encodeURIComponent(lo_search).replace(/%20/g, '+');
+    var safePath;
+    try {
+        var url = new URL(basePath, window.location.origin);
+        if (url.origin === window.location.origin) {
+            safePath = url.pathname + url.search;
+        } else {
+            safePath = window.location.pathname;
+        }
+    } catch (e) {
+        safePath = window.location.pathname;
+    }
+    document.location.href = safePath + '&LO_search=' + encodeURIComponent(lo_search).replace(/%20/g, '+');
 }
 function cleanModal(id) {
     var obj = document.getElementById(id);
