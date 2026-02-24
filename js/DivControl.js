@@ -629,12 +629,18 @@ function checkAllDtModAddDrop(elem, name, staticValue = undefined) {
         for (var i = 0; i < all_stu_ids.length; i++) {
             if (elem.checked == true) {
                 if (staticValue === undefined) value = all_stu_ids[i];
-                $('#hidden_checkboxes').append("<input type=hidden name='" + name + "[" + all_stu_ids[i] + "]' value='" + value + "' data-checkbox-hidden-id='" + all_stu_ids[i] + "' />");
+                var $hiddenInput = $('<input>', {
+                    type: 'hidden',
+                    name: name + '[' + all_stu_ids[i] + ']',
+                    value: value,
+                    'data-checkbox-hidden-id': all_stu_ids[i]
+                });
+                $('#hidden_checkboxes').append($hiddenInput);
                 if (document.getElementById(all_stu_ids[i])) {
                     document.getElementById(all_stu_ids[i]).checked = true;
                 }
             } else {
-                $('[data-checkbox-hidden-id=' + all_stu_ids[i] + ']').remove();
+                $("[data-checkbox-hidden-id='" + all_stu_ids[i] + "']").remove();
                 if (document.getElementById(all_stu_ids[i])) {
                     document.getElementById(all_stu_ids[i]).checked = false;
                 }
