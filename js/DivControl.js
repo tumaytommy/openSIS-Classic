@@ -580,7 +580,13 @@ function checkAllDtMod(elem, name, staticValue = undefined) {
         for (var i = 0; i < all_stu_ids.length; i++) {
             if (elem.checked == true) {
                 if (staticValue === undefined) value = all_stu_ids[i];
-                $('#hidden_checkboxes').append("<input type=hidden name='" + name + "[" + all_stu_ids[i] + "]' value='" + value + "' data-checkbox-hidden-id='" + all_stu_ids[i] + "' />");
+                var hiddenInputAll = $('<input>', {
+                    type: 'hidden',
+                    name: name + '[' + all_stu_ids[i] + ']',
+                    value: value,
+                    'data-checkbox-hidden-id': all_stu_ids[i]
+                });
+                $('#hidden_checkboxes').append(hiddenInputAll);
                 if (document.getElementById(all_stu_ids[i])) {
                     // document.getElementById(all_stu_ids[i]).checked = true;
                     document.querySelector('input[name="unused[' + all_stu_ids[i] + ']"]').checked = true;
@@ -598,7 +604,13 @@ function checkAllDtMod(elem, name, staticValue = undefined) {
             if (elem.checked == true) {
                 if (document.getElementById(unique_id[i])) {
                     if (staticValue === undefined) value = unique_id[i];
-                    $('#hidden_checkboxes').append("<input type=hidden name='" + name + "[" + unique_id[i] + "]' value='" + value + "' data-checkbox-hidden-id='" + unique_id[i] + "' />");
+                    var hiddenInput = $('<input>', {
+                        type: 'hidden',
+                        name: name + '[' + unique_id[i] + ']',
+                        value: value,
+                        'data-checkbox-hidden-id': unique_id[i]
+                    });
+                    $('#hidden_checkboxes').append(hiddenInput);
                     // document.getElementById(unique_id[i]).checked = true;
                     document.querySelector('input[name="unused[' + unique_id[i] + ']"]').checked = true;
                 }
