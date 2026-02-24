@@ -25,6 +25,12 @@
  * operations, use the specific integration system.
  */
 
+// HTML escape helper to prevent XSS
+var FCKeditor_HtmlEncode = function( str ) {
+	if ( str == null ) return '';
+	return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+};
+
 // FCKeditor Class
 var FCKeditor = function( instanceName, width, height, toolbarSet, value )
 {
@@ -159,7 +165,7 @@ FCKeditor.prototype._GetConfigHtml = function()
 		sConfig += encodeURIComponent( o ) + '=' + encodeURIComponent( this.Config[o] ) ;
 	}
 
-	return '<input type="hidden" id="' + this.InstanceName + '___Config" value="' + sConfig + '" style="display:none" />' ;
+	return '<input type="hidden" id="' + FCKeditor_HtmlEncode(this.InstanceName) + '___Config" value="' + FCKeditor_HtmlEncode(sConfig) + '" style="display:none" />' ;
 }
 
 FCKeditor.prototype._GetIFrameHtml = function()
@@ -177,13 +183,13 @@ FCKeditor.prototype._GetIFrameHtml = function()
 	if (this.ToolbarSet)
 		sLink += '&amp;Toolbar=' + this.ToolbarSet ;
 
-	var html = '<iframe id="' + this.InstanceName +
-		'___Frame" src="' + sLink +
-		'" width="' + this.Width +
-		'" height="' + this.Height ;
+	var html = '<iframe id="' + FCKeditor_HtmlEncode(this.InstanceName) +
+		'___Frame" src="' + FCKeditor_HtmlEncode(sLink) +
+		'" width="' + FCKeditor_HtmlEncode(this.Width) +
+		'" height="' + FCKeditor_HtmlEncode(this.Height) ;
 
 	if ( this.TabIndex )
-		html += '" tabindex="' + this.TabIndex ;
+		html += '" tabindex="' + FCKeditor_HtmlEncode(this.TabIndex) ;
 
 	html += '" frameborder="0" scrolling="no"></iframe>' ;
 
