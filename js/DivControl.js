@@ -505,7 +505,6 @@ function toggle_course_weight(param, cp_id) {
     }
 }
 function ListOutputJS() {
-    var basePath = document.getElementById("search_path").value;
     var lo_search = document.getElementById("LO_search").value;
     var safePath;
     try {
