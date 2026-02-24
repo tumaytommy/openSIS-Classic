@@ -510,13 +510,14 @@ function ListOutputJS() {
     var safePath;
     try {
         var url = new URL(basePath, window.location.origin);
-        if (url.origin === window.location.origin) {
+        var currentPath = window.location.pathname.split('?')[0];
+        if (url.origin === window.location.origin && url.pathname.indexOf(currentPath) === 0) {
             safePath = url.pathname + url.search;
         } else {
-            safePath = window.location.pathname;
+            safePath = currentPath;
         }
     } catch (e) {
-        safePath = window.location.pathname;
+        safePath = window.location.pathname.split('?')[0];
     }
     document.location.href = safePath + '&LO_search=' + encodeURIComponent(lo_search).replace(/%20/g, '+');
 }
