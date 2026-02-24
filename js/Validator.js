@@ -274,7 +274,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n[Current length = " +
             objValue.value.length +
             " ]" +
@@ -292,7 +292,7 @@ function V2validateData(strValidateStr, objValue, strError) {
         }
         $("#" + alertDiv).html(
           '<div class="alert alert-danger no-border"><i class="fa fa-info-circle"></i> ' +
-            strError +
+            escapeHtml(strError) +
             "\n[Current length = " +
             objValue.value.length +
             " ]" +
@@ -723,7 +723,7 @@ function ChangeYear(year) {
   strYear = year;
 
   if (strYear.length == 2) {
-    if (00 <= strYear && strYear < 25) {
+    if (0 <= strYear && strYear < 25) {
       strYear = "20" + strYear;
     } else {
       strYear = "19" + strYear;
