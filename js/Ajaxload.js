@@ -1291,7 +1291,7 @@ function formcheck_rollover()
                                         var qp_name = document.getElementById("name_" + s_old_elem[1]).value;
                                         if (qp_dt > qs_dt)
                                         {
-                                            document.getElementById("start_date").innerHTML = qs_name + " Cannot Be Before " + qp_name;
+                                            document.getElementById("start_date").textContent = qs_name + " Cannot Be Before " + qp_name;
                                             return false;
                                         }
                                     }
