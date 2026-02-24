@@ -1,3 +1,8 @@
+// HTML escape helper to prevent XSS
+function escapeHtmlDC(str) {
+    if (str == null) return '';
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
 
 function show_div(name, mp_id) {
     if (document.getElementById(name).checked) {
@@ -866,10 +871,10 @@ function autoset_gradelevel(thisElement) {
         document.getElementById("SMS_GRADE_LEVEL").readOnly = true;
 
         if (document.getElementById("gradeLevelHelp")) {
-            window.$("#gradeLevelHelp").html(`<div id="gradeLevelHelp" class="help-block">You cannot change the Grade Level as the student is already in this Grade Level in ${gradelevelDataParsed[selectedMP].school_name} for ${selectedMPText}.</div>`);
+            window.$("#gradeLevelHelp").html(`<div id="gradeLevelHelp" class="help-block">You cannot change the Grade Level as the student is already in this Grade Level in ${escapeHtmlDC(gradelevelDataParsed[selectedMP].school_name)} for ${escapeHtmlDC(selectedMPText)}.</div>`);
         }
         else {
-            window.$("#gradeLevelArea").append(`<div id="gradeLevelHelp" class="help-block">You cannot change the Grade Level as the student is already in this Grade Level in ${gradelevelDataParsed[selectedMP].school_name} for ${selectedMPText}.</div>`);
+            window.$("#gradeLevelArea").append(`<div id="gradeLevelHelp" class="help-block">You cannot change the Grade Level as the student is already in this Grade Level in ${escapeHtmlDC(gradelevelDataParsed[selectedMP].school_name)} for ${escapeHtmlDC(selectedMPText)}.</div>`);
         }
     }
     else {
