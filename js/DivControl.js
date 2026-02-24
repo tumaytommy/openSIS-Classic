@@ -505,9 +505,15 @@ function toggle_course_weight(param, cp_id) {
     }
 }
 function ListOutputJS() {
-    var location = document.getElementById("search_path").value;
+    var basePath = document.getElementById("search_path").value || '';
+    // Basic normalization to avoid dangerous schemes/protocols from DOM text
+    basePath = String(basePath).trim();
+    if (/^javascript:/i.test(basePath)) {
+        // Fallback to current path if an unexpected scheme is detected
+        basePath = window.location.pathname;
+    }
     var lo_search = document.getElementById("LO_search").value;
-    document.location.href = location + '&LO_search=' + encodeURIComponent(lo_search).replace(/%20/g, '+');
+    document.location.href = basePath + '&LO_search=' + encodeURIComponent(lo_search).replace(/%20/g, '+');
 }
 function cleanModal(id) {
     var obj = document.getElementById(id);
