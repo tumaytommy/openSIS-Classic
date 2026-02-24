@@ -745,8 +745,8 @@ function printFilesRail() {
     var fileCounter = 0;
 
     fileobj.map((file, index) => {
-        // fileList += `<li class="m-t-5"><button class="btn btn-danger btn-icon btn-xs m-r-10" type="button" onclick="removeFromFilesRail(${index})"><i class="fa fa-times"></i></button>${file.name}</li>`;
-        fileList += `<li class="m-t-10"><i class="fa fa-file-o text-primary m-r-10"></i>${file.name}</li>`;
+        // fileList += `<li class="m-t-5"><button class="btn btn-danger btn-icon btn-xs m-r-10" type="button" onclick="removeFromFilesRail(${index})"><i class="fa fa-times"></i></button>${escapeHtmlDC(file.name)}</li>`;
+        fileList += `<li class="m-t-10"><i class="fa fa-file-o text-primary m-r-10"></i>${escapeHtmlDC(file.name)}</li>`;
 
         fileCounter++;
     });
