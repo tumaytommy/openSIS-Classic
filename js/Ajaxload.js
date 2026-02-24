@@ -1241,12 +1241,12 @@ function formcheck_rollover()
 
                                     if (qs_month == "" || qs_day == "" || qs_year == "")
                                     {
-                                        document.getElementById("start_date").innerHTML = "Please Enter Valid " + qs_name;
+                                        document.getElementById("start_date").textContent = "Please Enter Valid " + qs_name;
                                         return false;
                                     }
                                     if (qe_month == "" || qe_day == "" || qe_year == "")
                                     {
-                                        document.getElementById("start_date").innerHTML = "Please Enter Valid " + qe_name;
+                                        document.getElementById("start_date").textContent = "Please Enter Valid " + qe_name;
                                         return false;
                                     }
 
@@ -1254,12 +1254,12 @@ function formcheck_rollover()
                                     {
                                         if (qs_dt < ss_dt)
                                         {
-                                            document.getElementById("start_date").innerHTML = qs_name + " Cannot Be Before " + ss_name;
+                                            document.getElementById("start_date").textContent = qs_name + " Cannot Be Before " + ss_name;
                                             return false;
                                         }
                                         if (qs_dt > se_dt)
                                         {
-                                            document.getElementById("start_date").innerHTML = qs_name + " Cannot Be After " + se_name;
+                                            document.getElementById("start_date").textContent = qs_name + " Cannot Be After " + se_name;
                                             return false;
                                         }
                                     }
@@ -1267,12 +1267,12 @@ function formcheck_rollover()
                                     {
                                         if (qe_dt < qs_dt)
                                         {
-                                            document.getElementById("start_date").innerHTML = qe_name + " Cannot Be Before " + qs_name;
+                                            document.getElementById("start_date").textContent = qe_name + " Cannot Be Before " + qs_name;
                                             return false;
                                         }
                                         if (qe_dt > se_dt)
                                         {
-                                            document.getElementById("start_date").innerHTML = qe_name + " Cannot Be After " + se_name;
+                                            document.getElementById("start_date").textContent = qe_name + " Cannot Be After " + se_name;
                                             return false;
                                         }
                                     }
