@@ -3084,9 +3084,9 @@ function SelectedParent(address_id, type, other_p_erson_id = '')
     $("#modal_default_lookup").modal('toggle');
     
     if (type == 'other')
-        window.location.href = 'Modules.php?modname=students/Student.php&include=AddressInc&category_id=3&func=search_select&type=' + type + '&nfunc=status&ajax=true&button=Select&con_info=old&add_id=' + other_p_erson_id + '&address_id=' + address_id + '&staff=' + selected_staff + '&person_id=' + other_p_erson_id;
+        window.location.href = 'Modules.php?modname=students/Student.php&include=AddressInc&category_id=3&func=search_select&type=' + encodeURIComponent(type) + '&nfunc=status&ajax=true&button=Select&con_info=old&add_id=' + encodeURIComponent(other_p_erson_id) + '&address_id=' + encodeURIComponent(address_id) + '&staff=' + encodeURIComponent(selected_staff) + '&person_id=' + encodeURIComponent(other_p_erson_id);
     else
-        window.location.href = 'Modules.php?modname=students/Student.php&include=AddressInc&category_id=3&func=search_select&type=' + type + '&nfunc=status&ajax=true&button=Select&add_id=&address_id=' + address_id + '&staff=' + selected_staff;
+        window.location.href = 'Modules.php?modname=students/Student.php&include=AddressInc&category_id=3&func=search_select&type=' + encodeURIComponent(type) + '&nfunc=status&ajax=true&button=Select&add_id=&address_id=' + encodeURIComponent(address_id) + '&staff=' + encodeURIComponent(selected_staff);
 
     // var detailsOfSelectedContact    =   selectedContact(selected_staff);
 
