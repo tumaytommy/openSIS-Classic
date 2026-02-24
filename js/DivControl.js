@@ -663,7 +663,12 @@ function checkAllDtMod2(elem, name, staticValue = undefined) {
         for (var i = 0; i < all_stu_ids.length; i++) {
             if (elem.checked == true) {
                 if (staticValue === undefined) value = all_stu_ids[i];
-                $('#hidden_checkboxes').append("<input type=hidden name='" + name + "[" + all_stu_ids[i] + "]' value='" + value + "' data-checkbox-hidden-id='" + all_stu_ids[i] + "' />");
+                var hiddenInputAll = document.createElement('input');
+                hiddenInputAll.type = 'hidden';
+                hiddenInputAll.name = name + "[" + all_stu_ids[i] + "]";
+                hiddenInputAll.value = value;
+                hiddenInputAll.setAttribute('data-checkbox-hidden-id', all_stu_ids[i]);
+                document.getElementById('hidden_checkboxes').appendChild(hiddenInputAll);
                 if (document.getElementById(all_stu_ids[i])) {
                     // document.getElementById(all_stu_ids[i]).checked=true;
                     // window.$('#'+all_stu_ids[i]).attr("checked",true);
@@ -683,7 +688,12 @@ function checkAllDtMod2(elem, name, staticValue = undefined) {
             if (elem.checked == true) {
                 if (document.getElementById(unique_id[i])) {
                     if (staticValue === undefined) value = unique_id[i];
-                    $('#hidden_checkboxes').append("<input type=hidden name='" + name + "[" + unique_id[i] + "]' value='" + value + "' data-checkbox-hidden-id='" + unique_id[i] + "' />");
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = name + "[" + unique_id[i] + "]";
+                    hiddenInput.value = value;
+                    hiddenInput.setAttribute('data-checkbox-hidden-id', unique_id[i]);
+                    document.getElementById('hidden_checkboxes').appendChild(hiddenInput);
                     // document.getElementById(unique_id[i]).checked=true;
                     // window.$('#'+unique_id[i]).attr("checked",true);
                     $(".student_label_cbx").prop('checked', true);
