@@ -319,25 +319,15 @@
                 boundElement.after(container).hide();
             }
             else {
-
                 var appendTo;
                 if (opts.appendTo === "parent") {
                     appendTo = boundElement.parent();
-                }
-                else if (opts.appendTo && opts.appendTo.jquery) {
-                    // jQuery object passed directly
-                    appendTo = opts.appendTo;
-                }
-                else if (opts.appendTo && (opts.appendTo.nodeType === 1 || opts.appendTo.nodeType === 9)) {
-                    // DOM element or document passed directly
+                } else if (typeof opts.appendTo === "string") {
+                    appendTo = $(document).find(opts.appendTo);
+                } else {
                     appendTo = $(opts.appendTo);
                 }
-                else if (typeof opts.appendTo === "string") {
-                    // Treat string strictly as a selector, not as HTML
-                    appendTo = $(document).find(opts.appendTo);
-                }
-
-                if (!appendTo || appendTo.length !== 1) {
+                if (appendTo.length !== 1) {
                     appendTo = $("body");
                 }
 
