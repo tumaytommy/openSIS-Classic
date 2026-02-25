@@ -915,7 +915,21 @@
             if (this.options.enableCollapsibleOptGroups && this.options.multiple) {
                 var label = $(group).attr("label");
                 var value = $(group).attr("value");
-                var r = $('<li class="multiselect-item multiselect-group"><a href="javascript:void(0);"><input type="checkbox" value="' + value + '"/><b> ' + label + '<b class="caret"></b></b></a></li>');
+
+                // Escape value to prevent HTML injection/XSS when interpolated into the attribute.
+                var escapeAttr = function(str) {
+                    if (str == null) {
+                        return '';
+                    }
+                    return String(str)
+                        .replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;');
+                };
+
+                var r = $('<li class="multiselect-item multiselect-group"><a href="javascript:void(0);"><input type="checkbox" value="' + escapeAttr(value) + '"/><b> ' + label + '<b class="caret"></b></b></a></li>');
 
                 if (this.options.enableClickableOptGroups) {
                     r.addClass("multiselect-group-clickable")
