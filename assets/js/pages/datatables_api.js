@@ -61,7 +61,13 @@ $(function() {
     // Individual column searching with text inputs
     $('.datatable-column-search-inputs tfoot td').not(':last-child').each(function () {
         var title = $('.datatable-column-search-inputs thead th').eq($(this).index()).text();
-        $(this).html('<input type="text" class="form-control input-sm" placeholder="Search '+title+'" />');
+        $(this).empty().append(
+            $('<input>', {
+                type: 'text',
+                'class': 'form-control input-sm',
+                placeholder: 'Search ' + title
+            })
+        );
     });
     var table = $('.datatable-column-search-inputs').DataTable();
     table.columns().every( function () {
