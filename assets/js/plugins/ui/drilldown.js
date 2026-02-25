@@ -39,6 +39,22 @@
 		//call in the default options
 		var options = $.extend(defaults, options);
 
+		// ensure classHeader (possibly provided via options) is a safe CSS class name
+		(function() {
+			var originalClassHeader = 'dd-header';
+			var classHeader = defaults.classHeader;
+			if (typeof classHeader !== 'string') {
+				classHeader = originalClassHeader;
+			} else {
+				classHeader = $.trim(classHeader);
+				// allow only characters valid/safe for a CSS class: letters, digits, underscore, hyphen
+				if (!/^[A-Za-z0-9_-]+$/.test(classHeader)) {
+					classHeader = originalClassHeader;
+				}
+			}
+			defaults.classHeader = classHeader;
+		})();
+
 		// ensure headerTag (possibly provided via options) is a safe, whitelisted HTML tag name
 		(function() {
 			var allowedHeaderTags = ['h1','h2','h3','h4','h5','h6','div','span','p'];
