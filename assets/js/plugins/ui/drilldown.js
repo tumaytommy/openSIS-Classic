@@ -193,7 +193,7 @@
 
 			// Get new breadcrumb and header text
 			var getNewBreadcrumb = $(defaults.headerTag,$header).html();
-			var getNewHeaderText = $('> a',element).html();
+			var getNewHeaderText = $('> a',element).text();
 			//var getParentText = $(wrapper).find('.'+defaults.classMenu).data('category');
 
 
@@ -267,8 +267,8 @@
 			$('a',element).show();
 
 			// Get new header text from clicked link
-			var getNewHeaderText = $('> a',element).html();
-			$(defaults.headerTag,$header).html(getNewHeaderText);
+			var getNewHeaderText = $('> a',element).text();
+			$(defaults.headerTag,$header).text(getNewHeaderText);
 
 			if(defaults.linkType == 'breadcrumb'){
 				var breadcrumbIndex = activeIndex-1;
@@ -276,12 +276,13 @@
 			}
 		}
 
-		function updateHeader(obj, html){
+		function updateHeader(obj, textContent){
 			if(defaults.includeHdr == true){
 				if($(defaults.headerTag,obj).length){
-					$(defaults.headerTag,obj).html(html);
+					$(defaults.headerTag,obj).text(textContent);
 				} else {
-					$(obj).append('<'+defaults.headerTag+'>'+html+'</'+defaults.headerTag+'>');
+					var $newHeader = $('<'+defaults.headerTag+'/>').text(textContent);
+					$(obj).append($newHeader);
 				}
 			}
 		}
