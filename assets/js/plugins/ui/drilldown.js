@@ -36,6 +36,22 @@
 			includeHdr		: true
 		};
 
+		// ensure classWrapper (possibly provided via options) is a safe CSS class name
+		(function() {
+			var originalClassWrapper = 'dd-wrapper';
+			var classWrapper = defaults.classWrapper;
+			if (typeof classWrapper !== 'string') {
+				classWrapper = originalClassWrapper;
+			} else {
+				classWrapper = $.trim(classWrapper);
+				// allow only characters valid/safe for a CSS class: letters, digits, underscore, hyphen
+				if (!/^[A-Za-z0-9_-]+$/.test(classWrapper)) {
+					classWrapper = originalClassWrapper;
+				}
+			}
+			defaults.classWrapper = classWrapper;
+		})();
+
 		//call in the default options
 		var options = $.extend(defaults, options);
 
