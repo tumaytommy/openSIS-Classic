@@ -13,7 +13,8 @@ function InsertComment(txt, img)
 var obj = document.getElementById('dc');
 obj.style.top = (zxcPos(document.getElementById(txt))[1] -155) + 'px'
 obj.style.left = 300;
-obj.innerHTML = '<br><br><table width=100%><tr><td align=center><textarea id="tempid" rows="6" name="S1" cols="49" style="width:450px; height:210px;">' + document.getElementById(txt).value + '</textarea></td></tr><tr><td align=center><input type=button class=btn_medium value="OK" onclick="InsertIntoInput(\''+txt+'\');"></td></tr></table>';
+obj.innerHTML = '<br><br><table width=100%><tr><td align=center><textarea id="tempid" rows="6" name="S1" cols="49" style="width:450px; height:210px;"></textarea></td></tr><tr><td align=center><input type=button class=btn_medium value="OK" onclick="InsertIntoInput(\''+txt+'\');"></td></tr></table>';
+document.getElementById('tempid').value = document.getElementById(txt).value;
 obj.style.visibility='visible';
 }
 
