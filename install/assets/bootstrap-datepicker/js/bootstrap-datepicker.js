@@ -1931,7 +1931,7 @@
 			var fparts = format.parts.slice();
 			// Remove noop parts
 			if (parts.length !== fparts.length){
-				fparts = fparts.filter(function(p){
+				fparts = $.grep(fparts, function(p){
 					return $.inArray(p, setters_order) !== -1;
 				});
 			}
