@@ -266,7 +266,7 @@ function V2validateData(strValidateStr, objValue, strError)
         }//alpha 
         case "alnumhyphen":
         {
-            var charpos = objValue.value.search("[^A-Za-z0-9\-_]");
+            var charpos = objValue.value.search("[^A-Za-z0-9_-]");
             if (objValue.value.length > 0 && charpos >= 0)
             {
                 if (!strError || strError.length == 0)
