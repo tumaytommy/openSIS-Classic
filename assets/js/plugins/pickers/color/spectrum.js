@@ -542,17 +542,21 @@
 
             var currentColor = get();
 
-            var html = $.map(paletteArray, function (palette, i) {
-                return paletteTemplate(palette, currentColor, "sp-palette-row sp-palette-row-" + i, opts);
+            var elements = $();
+
+            $.each(paletteArray, function (i, palette) {
+                var rowHtml = paletteTemplate(palette, currentColor, "sp-palette-row sp-palette-row-" + i, opts);
+                elements = elements.add($(rowHtml));
             });
 
             updateSelectionPaletteFromStorage();
 
             if (selectionPalette) {
-                html.push(paletteTemplate(getUniqueSelectionPalette(), currentColor, "sp-palette-row sp-palette-row-selection", opts));
+                var selectionHtml = paletteTemplate(getUniqueSelectionPalette(), currentColor, "sp-palette-row sp-palette-row-selection", opts);
+                elements = elements.add($(selectionHtml));
             }
 
-            paletteContainer.html(html.join(""));
+            paletteContainer.empty().append(elements);
         }
 
         function drawInitial() {
