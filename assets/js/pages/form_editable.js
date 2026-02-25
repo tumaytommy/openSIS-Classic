@@ -754,14 +754,20 @@ $(function() {
         showbuttons: 'bottom',
         clear: false,
         display: function(value) {
-            $(this).html(value); 
-            $(this).each(function() { 
-                var text = $(this).text().split(',');
-                for( var i = 0, len = text.length; i < len; i++ ) { 
-                    text[i] = '<span>' + text[i] + '</span>'; 
-                } 
-                $(this).html(text.join(', '));
-            });
+            var $container = $(this);
+            $container.empty();
+            var textItems = String(value || '').split(',');
+            for (var i = 0, len = textItems.length; i < len; i++) {
+                var trimmed = $.trim(textItems[i]);
+                if (!trimmed) {
+                    continue;
+                }
+                var $span = $('<span/>').text(trimmed);
+                if ($container.children().length) {
+                    $container.append(', ');
+                }
+                $container.append($span);
+            }
         }
     });
     $('#input-tags-text').on('shown', function(e, editable) {
