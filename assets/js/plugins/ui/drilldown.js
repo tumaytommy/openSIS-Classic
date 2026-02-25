@@ -42,11 +42,14 @@
 		// ensure headerTag (possibly provided via options) is a safe, whitelisted HTML tag name
 		(function() {
 			var allowedHeaderTags = ['h1','h2','h3','h4','h5','h6','div','span','p'];
-			var requestedHeaderTag = defaults.headerTag;
+			var requestedHeaderTag = options && typeof options.headerTag !== 'undefined'
+				? options.headerTag
+				: defaults.headerTag;
 			if (typeof requestedHeaderTag !== 'string') {
 				requestedHeaderTag = 'h6';
 			} else {
-				requestedHeaderTag = $.trim(requestedHeaderTag.toLowerCase());
+				// trim and normalize case without allowing HTML fragments
+				requestedHeaderTag = $.trim(requestedHeaderTag).toLowerCase();
 			}
 			if ($.inArray(requestedHeaderTag, allowedHeaderTags) === -1) {
 				requestedHeaderTag = 'h6';
