@@ -323,18 +323,10 @@
                 if (opts.appendTo === "parent") {
                     appendTo = boundElement.parent();
                 } else if (typeof opts.appendTo === "string") {
-                    var at = $.trim(opts.appendTo);
-                    // Prevent HTML-like strings from being interpreted as markup
-                    if (at.charAt(0) === "<") {
-                        appendTo = $("body");
-                    } else {
-                        appendTo = $(document).find(at);
-                    }
-                } else if (opts.appendTo && (opts.appendTo.nodeType === 1 || opts.appendTo.nodeType === 9 || opts.appendTo.window === opts.appendTo)) {
-                    // DOM element, document, or window
+                    appendTo = $(document).find(opts.appendTo);
+                } else if (opts.appendTo && (opts.appendTo.nodeType === 1 || opts.appendTo.nodeType === 9)) {
                     appendTo = $(opts.appendTo);
-                } else if (opts.appendTo && (opts.appendTo instanceof $)) {
-                    // jQuery object
+                } else if (opts.appendTo instanceof $) {
                     appendTo = opts.appendTo;
                 } else {
                     appendTo = $("body");
