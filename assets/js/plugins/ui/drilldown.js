@@ -36,17 +36,52 @@
 			includeHdr		: true
 		};
 
+		// ensure classWrapper (possibly provided via options) is a safe CSS class name
+		(function() {
+			var originalClassWrapper = 'dd-wrapper';
+			var classWrapper = defaults.classWrapper;
+			if (typeof classWrapper !== 'string') {
+				classWrapper = originalClassWrapper;
+			} else {
+				classWrapper = $.trim(classWrapper);
+				// allow only characters valid/safe for a CSS class: letters, digits, underscore, hyphen
+				if (!/^[A-Za-z0-9_-]+$/.test(classWrapper)) {
+					classWrapper = originalClassWrapper;
+				}
+			}
+			defaults.classWrapper = classWrapper;
+		})();
+
 		//call in the default options
 		var options = $.extend(defaults, options);
+
+		// ensure classHeader (possibly provided via options) is a safe CSS class name
+		(function() {
+			var originalClassHeader = 'dd-header';
+			var classHeader = defaults.classHeader;
+			if (typeof classHeader !== 'string') {
+				classHeader = originalClassHeader;
+			} else {
+				classHeader = $.trim(classHeader);
+				// allow only characters valid/safe for a CSS class: letters, digits, underscore, hyphen
+				if (!/^[A-Za-z0-9_-]+$/.test(classHeader)) {
+					classHeader = originalClassHeader;
+				}
+			}
+			defaults.classHeader = classHeader;
+		})();
 
 		// ensure headerTag (possibly provided via options) is a safe, whitelisted HTML tag name
 		(function() {
 			var allowedHeaderTags = ['h1','h2','h3','h4','h5','h6','div','span','p'];
-			var requestedHeaderTag = defaults.headerTag;
+			var requestedHeaderTag = options && typeof options.headerTag !== 'undefined'
+				? options.headerTag
+				: defaults.headerTag;
 			if (typeof requestedHeaderTag !== 'string') {
 				requestedHeaderTag = 'h6';
 			} else {
-				requestedHeaderTag = $.trim(requestedHeaderTag.toLowerCase());
+				// trim and normalize case without allowing HTML fragments
+				requestedHeaderTag = $.trim(requestedHeaderTag).toLowerCase();
 			}
 			if ($.inArray(requestedHeaderTag, allowedHeaderTags) === -1) {
 				requestedHeaderTag = 'h6';
@@ -233,7 +268,9 @@
 			}
 			if(defaults.linkType == 'link'){
 				if(!$('a',$header).length){
-					$($header).prepend('<ul><li><a href="#" class="first"> '+defaults.resetText+'</a></li></ul>');
+					var $resetList = $('<ul><li><a href="#" class="first"></a></li></ul>');
+					$('a.first', $resetList).text(defaults.resetText);
+					$($header).prepend($resetList);
 				}
 			}
 			// Update header text
