@@ -324,8 +324,12 @@
                     appendTo = boundElement.parent();
                 } else if (typeof opts.appendTo === "string") {
                     appendTo = $(document).find(opts.appendTo);
-                } else {
+                } else if (opts.appendTo && (opts.appendTo.nodeType === 1 || opts.appendTo.nodeType === 9)) {
                     appendTo = $(opts.appendTo);
+                } else if (opts.appendTo instanceof $) {
+                    appendTo = opts.appendTo;
+                } else {
+                    appendTo = $("body");
                 }
                 if (appendTo.length !== 1) {
                     appendTo = $("body");
