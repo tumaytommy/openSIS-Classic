@@ -39,6 +39,21 @@
 		//call in the default otions
 		var options = $.extend(defaults, options);
 
+		// ensure headerTag is a safe, whitelisted HTML tag name
+		(function() {
+			var allowedHeaderTags = ['h1','h2','h3','h4','h5','h6','div','span','p'];
+			var requestedHeaderTag = defaults.headerTag;
+			if (typeof requestedHeaderTag !== 'string') {
+				requestedHeaderTag = 'h6';
+			} else {
+				requestedHeaderTag = $.trim(requestedHeaderTag.toLowerCase());
+			}
+			if ($.inArray(requestedHeaderTag, allowedHeaderTags) === -1) {
+				requestedHeaderTag = 'h6';
+			}
+			defaults.headerTag = requestedHeaderTag;
+		})();
+
 		//act upon the element that is passed into the design
 		return this.each(function(options){
 
