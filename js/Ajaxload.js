@@ -1147,19 +1147,19 @@ function formcheck_rollover()
                             var sem_name = document.getElementById("name_" + j).value;
                             if (s_month == "" || s_day == "" || s_year == "")
                             {
-                                document.getElementById("start_date").innerHTML = "Please Enter Valid " + sem_name;
+                                document.getElementById("start_date").textContent = "Please Enter Valid " + sem_name;
                                 return false;
                             } else
                             {
                                 sem_dt = Date.parse(sem_dt);
                                 if (sem_dt < s_start_dt)
                                 {
-                                    document.getElementById("start_date").innerHTML = sem_name + " Cannot Be Before School's Begin Date";
+                                    document.getElementById("start_date").textContent = sem_name + " Cannot Be Before School's Begin Date";
                                     return false;
                                 }
                                 if (sem_dt > s_end_dt)
                                 {
-                                    document.getElementById("start_date").innerHTML = sem_name + " Cannot Be Be After School's End Date";
+                                    document.getElementById("start_date").textContent = sem_name + " Cannot Be Be After School's End Date";
                                     return false;
                                 } else
                                 {
@@ -1175,7 +1175,7 @@ function formcheck_rollover()
                                         var sem_p_name = document.getElementById("name_" + j_p).value;
                                         if (sem_dt < sem_p_dt)
                                         {
-                                            document.getElementById("start_date").innerHTML = sem_name + " Cannot Be Before " + sem_p_name;
+                                            document.getElementById("start_date").textContent = sem_name + " Cannot Be Before " + sem_p_name;
                                             return false;
                                         }
                                     } else
@@ -1190,7 +1190,7 @@ function formcheck_rollover()
                                             var e_p_name = document.getElementById("name_" + prev_l_st).value;
                                             if (sem_dt < e_p_dt)
                                             {
-                                                document.getElementById("start_date").innerHTML = sem_name + " Cannot Be Before " + e_p_name;
+                                                document.getElementById("start_date").textContent = sem_name + " Cannot Be Before " + e_p_name;
                                                 return false;
                                             }
                                         }
