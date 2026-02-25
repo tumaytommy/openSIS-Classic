@@ -52,6 +52,22 @@
 			defaults.classWrapper = classWrapper;
 		})();
 
+		// ensure headerTag (possibly provided via options) is a safe HTML tag name
+		(function() {
+			var originalHeaderTag = 'h6';
+			var headerTag = defaults.headerTag;
+			if (typeof headerTag !== 'string') {
+				headerTag = originalHeaderTag;
+			} else {
+				headerTag = $.trim(headerTag);
+				// allow only a simple tag name starting with a letter, followed by letters or digits
+				if (!/^[A-Za-z][A-Za-z0-9]*$/.test(headerTag)) {
+					headerTag = originalHeaderTag;
+				}
+			}
+			defaults.headerTag = headerTag;
+		})();
+
 		//call in the default options
 		var options = $.extend(defaults, options);
 
