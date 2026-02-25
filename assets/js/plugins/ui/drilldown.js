@@ -236,7 +236,9 @@
 			}
 			if(defaults.linkType == 'link'){
 				if(!$('a',$header).length){
-					$($header).prepend('<ul><li><a href="#" class="first"> '+defaults.resetText+'</a></li></ul>');
+					var $resetList = $('<ul><li><a href="#" class="first"></a></li></ul>');
+					$('a.first', $resetList).text(defaults.resetText);
+					$($header).prepend($resetList);
 				}
 			}
 			// Update header text
