@@ -333,7 +333,7 @@
                 } else if (opts.appendTo && (opts.appendTo.nodeType === 1 || opts.appendTo.nodeType === 9 || opts.appendTo.window === opts.appendTo)) {
                     // DOM element, document, or window
                     appendTo = $(opts.appendTo);
-                } else if (opts.appendTo && typeof opts.appendTo.jquery === "string") {
+                } else if (opts.appendTo && (opts.appendTo instanceof $)) {
                     // jQuery object
                     appendTo = opts.appendTo;
                 } else {
