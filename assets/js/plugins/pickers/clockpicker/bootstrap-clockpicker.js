@@ -164,7 +164,8 @@
 		
 		if (! options.autoclose) {
 			// If autoclose is not setted, append a button
-			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button">' + options.donetext + '</button>')
+			$('<button type="button" class="btn btn-sm btn-default btn-block clockpicker-button"></button>')
+				.text(options.donetext)
 				.click($.proxy(this.done, this))
 				.appendTo(popover);
 		}
