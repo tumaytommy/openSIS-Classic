@@ -282,19 +282,24 @@
 			// Add new breadcrumb
 			if(defaults.linkType == 'breadcrumb'){
 				if(!$('ul',$header).length){
-					$($header).prepend('<ul></ul>');
+					$($header).prepend(document.createElement('ul'));
 				}
 				if(getNewBreadcrumb == defaults.defaultText){
-					$('ul',$header).append('<li><a href="#" class="first"> '+defaults.resetText+'</a></li>');
+					var $li = $(document.createElement('li'));
+					var $a = $(document.createElement('a')).attr('href', '#').addClass('first').text(' ' + defaults.resetText);
+					$('ul',$header).append($li.append($a));
 				} else {
-					$('ul',$header).append('<li><a href="#"> '+getNewBreadcrumb+'</a></li>');
+					var $li = $(document.createElement('li'));
+					var $a = $(document.createElement('a')).attr('href', '#').text(' ' + getNewBreadcrumb);
+					$('ul',$header).append($li.append($a));
 				}
 			}
 			if(defaults.linkType == 'backlink'){
 				if(!$('a',$header).length){
-					$($header).prepend('<a href="#" class="link-back"> '+getNewBreadcrumb+'</a>');
+					var $a = $(document.createElement('a')).attr('href', '#').addClass('link-back').text(' ' + getNewBreadcrumb);
+					$($header).prepend($a);
 				} else {
-					$('.link-back',$header).html(getNewBreadcrumb);
+					$('.link-back',$header).text(getNewBreadcrumb);
 				}
 			}
 			if(defaults.linkType == 'link'){
