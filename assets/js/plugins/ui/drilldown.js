@@ -110,14 +110,14 @@
 
 			var $dcDrilldownObj = this;
 			$($dcDrilldownObj).addClass(defaults.classMenu);
-			var $wrapper = '<div class="'+defaults.classWrapper+'" />';
+			var $wrapper = $(document.createElement('div')).addClass(defaults.classWrapper);
 			$($dcDrilldownObj).wrap($wrapper);
 			var $dcWrapper = $($dcDrilldownObj).parent();
 			var objIndex = $($dcWrapper).index('.'+defaults.classWrapper);
 			var idHeader = defaults.classHeader+'-'+objIndex;
 			var idWrapper = defaults.classWrapper+'-'+objIndex;
 			$($dcWrapper).attr('id',idWrapper);
-			var $header = '<div id="'+idHeader+'" class="'+defaults.classHeader+'"></div>';
+			var $header = $(document.createElement('div')).attr('id', idHeader).addClass(defaults.classHeader);
 
 			setUpDrilldown();
 
