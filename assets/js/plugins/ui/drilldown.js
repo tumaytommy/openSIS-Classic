@@ -289,7 +289,7 @@
 			var $header = $('.'+defaults.classHeader, wrapper);
 
 			// Get new breadcrumb and header text
-			var getNewBreadcrumb = $(defaults.headerTag,$header).html();
+			var getNewBreadcrumb = $header.find(defaults.headerTag).text();
 			var getNewHeaderText = $('> a',element).text();
 			//var getParentText = $(wrapper).find('.'+defaults.classMenu).data('category');
 
