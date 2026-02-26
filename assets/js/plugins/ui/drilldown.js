@@ -346,10 +346,11 @@
 
 		function updateHeader(obj, textContent){
 			if(defaults.includeHdr == true){
-				if($(defaults.headerTag,obj).length){
-					$(defaults.headerTag,obj).text(textContent);
+				var $existingHeader = $(obj).find(defaults.headerTag);
+				if($existingHeader.length){
+					$existingHeader.text(textContent);
 				} else {
-					var $newHeader = $('<'+defaults.headerTag+'/>').text(textContent);
+					var $newHeader = $(document.createElement(defaults.headerTag)).text(textContent);
 					$(obj).append($newHeader);
 				}
 			}
