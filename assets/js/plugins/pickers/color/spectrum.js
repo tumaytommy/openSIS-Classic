@@ -319,23 +319,23 @@
                 boundElement.after(container).hide();
             }
             else {
-                var appendTo;
+                var appendToEl;
                 if (opts.appendTo === "parent") {
-                    appendTo = boundElement.parent();
+                    appendToEl = boundElement.parent().get(0);
                 } else if (typeof opts.appendTo === "string") {
-                    appendTo = $(document).find(opts.appendTo);
+                    appendToEl = $(document).find(opts.appendTo).get(0);
                 } else if (opts.appendTo && (opts.appendTo.nodeType === 1 || opts.appendTo.nodeType === 9)) {
-                    appendTo = $(opts.appendTo);
+                    appendToEl = opts.appendTo;
                 } else if (opts.appendTo instanceof $) {
-                    appendTo = opts.appendTo;
+                    appendToEl = opts.appendTo.get(0);
                 } else {
-                    appendTo = $("body");
+                    appendToEl = document.body;
                 }
-                if (appendTo.length !== 1) {
-                    appendTo = $("body");
+                if (!appendToEl) {
+                    appendToEl = document.body;
                 }
 
-                appendTo.append(container);
+                appendToEl.appendChild(container.get(0));
             }
 
             updateSelectionPaletteFromStorage();
