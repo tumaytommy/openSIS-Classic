@@ -120,6 +120,21 @@
 			defaults.classIcon = classIcon;
 		})();
 
+		// ensure classCount (possibly provided via options) is a safe CSS class name
+		(function() {
+			var originalClassCount = 'dd-count';
+			var classCount = defaults.classCount;
+			if (typeof classCount !== 'string') {
+				classCount = originalClassCount;
+			} else {
+				classCount = $.trim(classCount);
+				if (!/^[A-Za-z0-9_-]+$/.test(classCount)) {
+					classCount = originalClassCount;
+				}
+			}
+			defaults.classCount = classCount;
+		})();
+
 		//act upon the element that is passed into the design
 		return this.each(function(options){
 
@@ -202,7 +217,8 @@
 							var parentLink = $('a:not(.'+defaults.classParentLink+')',this);
 							var countParent = parseInt($(parentLink).length);
 							getCount = countParent;
-							$('> a',this).append(' <span class="'+defaults.classCount+'">('+getCount+')</span>');
+							var $countSpan = $(document.createElement('span')).addClass(defaults.classCount).text('(' + getCount + ')');
+							$('> a',this).append(' ').append($countSpan);
 						}
 					}
 				});
