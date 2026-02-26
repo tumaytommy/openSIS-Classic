@@ -105,6 +105,21 @@
 			defaults.headerTag = requestedHeaderTag;
 		})();
 
+		// ensure classIcon (possibly provided via options) is a safe CSS class name
+		(function() {
+			var originalClassIcon = 'dd-icon';
+			var classIcon = defaults.classIcon;
+			if (typeof classIcon !== 'string') {
+				classIcon = originalClassIcon;
+			} else {
+				classIcon = $.trim(classIcon);
+				if (!/^[A-Za-z0-9_-]+$/.test(classIcon)) {
+					classIcon = originalClassIcon;
+				}
+			}
+			defaults.classIcon = classIcon;
+		})();
+
 		//act upon the element that is passed into the design
 		return this.each(function(options){
 
@@ -153,7 +168,7 @@
 			// Set up accordion
 			function setUpDrilldown(){
 
-				$arrow = '<span class="'+defaults.classIcon+'"></span>';
+				$arrow = $(document.createElement('span')).addClass(defaults.classIcon);
 				$($dcDrilldownObj).before($header);
 
 				// Get width of menu container & height of list item
